@@ -190,7 +190,7 @@ describe('My Selenium Tests', function () {
         const driver = await new selenium.Builder().forBrowser('chrome').build();
         await driver.manage().window().maximize();
         await driver.get('http://localhost:3000/');
-        h1Element = await driver.findElement(selenium.By.css('h1'));
+        const h1Element = await driver.findElement(selenium.By.css('h1'));
     })
 
 })
@@ -211,7 +211,7 @@ describe('My Selenium Tests', function () {
         const driver = await new selenium.Builder().forBrowser('chrome').build();
         await driver.manage().window().maximize();
         await driver.get('http://localhost:3000/');
-        h1Element = await driver.findElement(selenium.By.css('h1'));
+        const h1Element = await driver.findElement(selenium.By.css('h1'));
         const actualText = await h1Element.getText();
     })
 
@@ -233,7 +233,7 @@ describe('My Selenium Tests', function () {
         const driver = await new selenium.Builder().forBrowser('chrome').build();
         await driver.manage().window().maximize();
         await driver.get('http://localhost:3000/');
-        h1Element = await driver.findElement(selenium.By.css('h1'));
+        const h1Element = await driver.findElement(selenium.By.css('h1'));
         const actualText = await h1Element.getText();
         const expectedText = 'Things I should stop procrastinating:';
 
@@ -258,7 +258,7 @@ describe('My Selenium Tests', function () {
         const driver = await new selenium.Builder().forBrowser('chrome').build();
         await driver.manage().window().maximize();
         await driver.get('http://localhost:3000/');
-        h1Element = await driver.findElement(selenium.By.css('h1'));
+        const h1Element = await driver.findElement(selenium.By.css('h1'));
         const actualText = await h1Element.getText();
         const expectedText = 'Things I should stop procrastinating:';
 
@@ -283,7 +283,7 @@ describe('My Selenium Tests', function () {
         const driver = await new selenium.Builder().forBrowser('chrome').build();
         await driver.manage().window().maximize();
         await driver.get('http://localhost:3000/');
-        h1Element = await driver.findElement(selenium.By.css('h1'));
+        const h1Element = await driver.findElement(selenium.By.css('h1'));
         const actualText = await h1Element.getText();
         const expectedText = 'Things I should stop procrastinating:';
 
