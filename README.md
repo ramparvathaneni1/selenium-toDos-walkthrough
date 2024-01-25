@@ -62,17 +62,13 @@
 
 ## Installing Selenium
 
-Now install the `selenium-webdriver` package for this project, so we can use it in our tests using the command:
+Now install the `selenium-webdriver` package for this project, so we can use it in our tests using the command in a separete terminal:
 
 ```bash
 npm install selenium-webdriver
 ```
 
-Inside of your src directory you will see a directory for tests inside that directory is a folder for component test with the App.test.js which is running our jest component test.  In order to keep our tests organized we will create a seperate folder for our selenium tests inside a folder called e2e.
-
-`src/tests/e2e`
-
-Inside the e2e folder create a file called `selenium-todos.test.js` which is the file we will be using to write our selenium tests.
+Inside of your src directory you will see a directory for tests inside that directory is a folder for component test with the App.test.js which is running our jest component test.  In order to keep our tests organized we will be using a seperate folder called e2e which will hold our selenium-todos.test.js file.  Please make sure you are inside of selenium-todos.test.js
 
 
 ## Step 1: Import Selenium WebDriver
@@ -80,6 +76,9 @@ Inside the e2e folder create a file called `selenium-todos.test.js` which is the
 In this step, we import the `selenium-webdriver` package into our test script. The `selenium-webdriver` package allows us to programmatically control web browsers and perform actions such as opening web pages, interacting with web elements, and verifying web page content.
 
 By requiring the `selenium-webdriver` package, we make its functionality available for use in our test script. This step is essential as it sets up the foundation for automating interactions with our web application.
+
+
+**e2e/selenium-todos.test.js**
 
 ```javascript
 const selenium = require('selenium-webdriver');
@@ -96,12 +95,14 @@ In this test, we aim to verify that the header text of our web application match
 
 1. We begin by describing the test suite using `describe('My Selenium Tests', function () { ... })`. This test suite encompasses all the Selenium tests for our application.
 
+*Note alternatively you may choose to use arrow function expression syntax as well, the test behavior will not change we will show the use of arrow function expression syntax setup in our next tests*
+
 **e2e/selenium-todos.test.js**
 ```javascript
 const selenium = require('selenium-webdriver');
 
 describe('My Selenium Tests', function () {
-
+//  our tests will go here all tests will be part of the My Selenium Tests Suite
 
 })
 
@@ -123,8 +124,17 @@ describe('My Selenium Tests', function () {
 ```
 
 3. Within the test case:
-   - We create a Selenium WebDriver instance for the Chrome browser using `const driver = await new selenium.Builder().forBrowser('chrome').build();`. This sets up the WebDriver to control the browser.
-   - We maximize the browser window to ensure consistent visibility using `await driver.manage().window().maximize();`.
+   - We create a Selenium WebDriver instance for the Chrome browser using
+
+   ```javascript
+   const driver = await new selenium.Builder().forBrowser('chrome').build();`
+   ```
+   This sets up the WebDriver to control the browser.
+   - We maximize the browser window to ensure consistent visibility using
+
+   ```javascript
+   await driver.manage().window().maximize();
+   ```
 
    **e2e/selenium-todos.test.js**
 ```javascript
@@ -132,15 +142,19 @@ const selenium = require('selenium-webdriver');
 
 describe('My Selenium Tests', function () {
   test(' should verify h1 text', async function() {
-        const driver = await new selenium.Builder().forBrowser('firefox').build();
-        await driver.manage().window().maximize();
+      const driver = await new selenium.Builder().forBrowser('firefox').build();
+      await driver.manage().window().maximize();
     })
 
 })
 
 ```
 
-4. We navigate to our web application by opening its URL with `await driver.get('http://localhost:3000/');`.
+4. We navigate to our web application by opening its URL with
+
+```javascript
+await driver.get('http://localhost:3000/');
+```
 
 **e2e/selenium-todos.test.js**
 ```javascript
@@ -157,7 +171,12 @@ describe('My Selenium Tests', function () {
 
 ```
 
-5. We locate the `<h1>` element of the web page using `const h1Element = await driver.findElement(selenium.By.css('h1'));`.
+5. We locate the `<h1>` element of the web page using
+
+```javascript
+
+const h1Element = await driver.findElement(selenium.By.css('h1'));
+```
 
 **e2e/selenium-todos.test.js**
 ```javascript
@@ -174,7 +193,10 @@ describe('My Selenium Tests', function () {
 })
 ```
 
-6. We retrieve the actual text of the `<h1>` element using `const actualText = await h1Element.getText();`.
+6. We retrieve the actual text of the `<h1>` element using
+```javascript
+const actualText = await h1Element.getText();
+````
 
 **e2e/selenium-todos.test.js**
 ```javascript
@@ -193,6 +215,10 @@ describe('My Selenium Tests', function () {
 ```
 
 7. We define the expected text that the header should have, which is 'Things I should stop procrastinating:'.
+
+```javascript
+const expectedText = 'Things I should stop procrastinating:';
+```
 
 **e2e/selenium-todos.test.js**
 ```javascript
@@ -214,7 +240,36 @@ describe('My Selenium Tests', function () {
 
 8. We use Jest's `expect` and `toBe` matcher to compare the actual text with the expected text, ensuring they match as follows:
 
+```javascript
+expect(actualText).toBe(expectedText);
+```
 
+
+**e2e/selenium-todos.test.js**
+```javascript
+const selenium = require('selenium-webdriver');
+
+describe('My Selenium Tests', function () {
+  test(' should verify h1 text', async function() {
+        const driver = await new selenium.Builder().forBrowser('firefox').build();
+        await driver.manage().window().maximize();
+        await driver.get('http://localhost:3000/');
+        h1Element = await driver.findElement(selenium.By.css('h1'));
+        const actualText = await h1Element.getText();
+        const expectedText = 'Things I should stop procrastinating:';
+
+        // Using Jest's expect and toBe matcher
+        expect(actualText).toBe(expectedText);
+    })
+
+})
+```
+
+9. await driver.quit();: We use the quit() method to gracefully close the WebDriver instance and the associated browser.
+
+```javascript
+await driver.quit()
+```
 **e2e/selenium-todos.test.js**
 ```javascript
 const selenium = require('selenium-webdriver');
@@ -237,7 +292,7 @@ describe('My Selenium Tests', function () {
 })
 ```
 
-9. Run the selenium test.  Only run our selenium-todos.test.js file enter the command:
+10. Run the selenium test.  Only run our selenium-todos.test.js file enter the command:
 
 ```bash
 npm test -- --testPathPattern=selenium-todos.test.js
@@ -248,7 +303,7 @@ You should now see that your test has passed.
 
 ## Setup and Teardown for Selenium Tests
 
-In order to run Selenium WebDriver tests, it's essential to set up and tear down the WebDriver instance correctly. This ensures that the browser is launched before running the tests and is properly closed afterward. The `beforeAll` and `afterAll` functions provided by Jest are used for these purposes.
+In order to run Selenium WebDriver tests, it's essential to set up and tear down the WebDriver instance correctly. This ensures that the browser is launched before running the tests and is properly closed afterward. The `beforeAll` and `afterAll` functions provided by Jest are used for these purposes to make our tests DRY.
 
 ### Setting up Selenium WebDriver
 
@@ -270,7 +325,7 @@ describe('My Selenium Tests', function () {
 })
 ```
 
-driver = await new selenium.Builder().forBrowser('chrome').build();: We create a new WebDriver instance for the Chrome browser using Selenium's Builder class. This is where we specify the browser to be used.
+driver = await new selenium.Builder().forBrowser('chrome').build();: We create a new WebDriver instance for the firefox browser using Selenium's Builder class. This is where we specify the browser to be used.
 
 await driver.manage().window().maximize();: We maximize the browser window to ensure that the web application is displayed clearly during testing.
 
@@ -385,6 +440,11 @@ In this test case, we will verify the functionality of adding an item to the to-
 After entering the text, the test presses the Return key on the keyboard to trigger the addition of the item to the list.
 
 ```javascript
+await inputElement.sendKeys(selenium.Key.RETURN);
+```
+
+**e2e/selenium-todos.test.js**
+```javascript
 
  test('Add Item to List', async () => {
         // Find the text input element
@@ -406,7 +466,7 @@ Find List Items:
 The test selects all list items on the web page by targeting the <li> elements. These elements represent the to-do list items.
 
 ```javascript
-const lastItemText = await listItems[listItems.length - 1].getText();
+const listItems = await driver.findElements(selenium.By.css('li'));
 ```
 
 **e2e/selenium-todos.test.js**
@@ -426,7 +486,7 @@ const lastItemText = await listItems[listItems.length - 1].getText();
         // after we have entered our text now lets go ahead and hit the return key
         await inputElement.sendKeys(selenium.Key.RETURN);
 
-        //  without a delay
+        //  entering input without a delay
         // await inputElement.sendKeys('Eat more ice cream', selenium.Key.RETURN);
 
         // lets select our list items by targeting li css element
@@ -473,7 +533,9 @@ expect(lastItemText).toBe('Eat more ice cream');
       });
 ```
 
-e2e/selenium-todos.test.js
+***Note using [test.only()](https://jestjs.io/docs/api#testonlyname-fn-timeout)***
+
+**e2e/selenium-todos.test.js**
 
 ```javascript
 const selenium = require('selenium-webdriver');
@@ -493,7 +555,7 @@ describe('My Selenium Tests', function () {
         await driver.quit()
     })
 
-    test.only(' should verify h1 text', async function() {
+    test(' should verify h1 text', async function() {
         // we no longer have to provide our setup code as this will now run beforeAll
         //  test thanks to the beforeAll method
         // const driver = await new selenium.Builder().forBrowser('chrome').build();
@@ -506,8 +568,8 @@ describe('My Selenium Tests', function () {
         // Using Jest's expect and toBe matcher
         expect(actualText).toBe(expectedText);
     })
-
-    test('Add Item to List', async () => {
+//  using test.only will make sure only that particular test will run
+    test.only('Add Item to List', async () => {
         // Find the text input element
         const inputElement = await driver.findElement(selenium.By.css('[placeholder="Type an item here"]'));
 
@@ -636,7 +698,7 @@ describe('My Selenium Tests', function () {
         await driver.quit()
     })
 
-    test.only(' should verify h1 text', async function() {
+    test(' should verify h1 text', async function() {
         // we no longer have to provide our setup code as this will now run beforeAll
         //  test thanks to the beforeAll method
         // const driver = await new selenium.Builder().forBrowser('chrome').build();
