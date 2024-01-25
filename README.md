@@ -277,12 +277,21 @@ await driver.manage().window().maximize();: We maximize the browser window to en
 await driver.get('http://localhost:3000/');: We navigate the browser to the URL of our web application (http://localhost:3000/ in this case).
 
 ### Tearing Down Selenium WebDriver
+
+After all the tests have been executed, it's crucial to properly close the WebDriver instance to free up resources and terminate the browser. Here's the teardown process:
+
 ```javascript
 afterAll(async function () {
     // Close the WebDriver instance and the associated browser
     await driver.quit();
 })
 ```
+
+afterAll(async function () {: This code block uses afterAll, a Jest function that runs after all the tests in the test suite. It's where we tear down the WebDriver instance.
+
+await driver.quit();: We use the quit() method to gracefully close the WebDriver instance and the associated browser.
+
+By following this setup and teardown pattern, you ensure that your Selenium tests start with a clean browser environment and properly release resources when they finish.
 
 **Updated Tests**
 ```javascript
@@ -326,6 +335,9 @@ Now run your test again
 ```bash
 npm test -- --testPathPattern=selenium-todos.test.js
 ```
+
+Test should all pass
+
 ## Test Case: Add Item to List
 
 In this test case, we will verify the functionality of adding an item to the to-do list.
@@ -680,5 +692,3 @@ describe('My Selenium Tests', function () {
         expect(listItems.length).toBe(0);
     });
 })
-
-
