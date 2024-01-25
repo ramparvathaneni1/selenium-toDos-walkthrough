@@ -296,7 +296,7 @@ describe('My Selenium Tests', function () {
 })
 ```
 
-10. Run the selenium test.  Only run our selenium-todos.test.js file enter the command:
+10. Run the selenium test.  Only run our selenium-todos.test.js file enter the command in another terminal:
 
 ```bash
 npm test src/tests/e2e/selenium-todos.test.js
@@ -311,6 +311,20 @@ npm test -- --testPathPattern=selenium-todos.test.js
 
 **You should now see that your test has passed.**
 
+***Test Failing? Are you receiving this on your screen and your terminal, is your react application on?***
+
+![](./assets/unable-connect-screen.png)
+
+The Terminal may show...
+
+![](./assets/unable-connect-terminal.png)
+
+Make sure to run the react application enter command in terminal:
+
+```javascript
+npm run start
+
+```
 
 ## Setup and Teardown for Selenium Tests
 
