@@ -634,6 +634,16 @@ The test locates the "Finished the list!" button on the web page using an [XPath
 
 **Note There are other ways to also differentiate between two elements by not using the xpath we are however taking this opportunity to also introduce the xpath method in selenium**
 
+Finding the xpath
+
+- in the firefox browser right click and then you will see a Inspect(Q) Option
+
+![](./assets/right-click-inspect.png)
+
+Click inspect after next to inspect in the console use the icon to the left which will allow you to pick an element after clicking on it hover over the Finished the list! button.  Click on it then in the blue text in the button left right click and you will now see copy hover over copy and now you will see a xpath option clicking will copy the xpath to your clipboard to have available to paste.
+
+![](./assets/x-path-copy.png)
+
 ```javascript
 const finishedButton = await driver.findElement(selenium.By.xpath('//button[normalize-space()="Finished the list!"]'));
 await finishedButton.click();
