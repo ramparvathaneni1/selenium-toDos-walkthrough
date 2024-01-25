@@ -331,7 +331,7 @@ npm run start
 
 ## Setup and Teardown for Selenium Tests
 
-In order to run Selenium WebDriver tests, it's essential to set up and tear down the WebDriver instance correctly. This ensures that the browser is launched before running the tests and is properly closed afterward. The `beforeAll` and `afterAll` functions provided by Jest are used for these purposes to make our tests DRY.
+In order to run Selenium WebDriver tests, it's essential to set up and tear down the WebDriver instance correctly. This ensures that the browser is launched before running the tests and is properly closed afterward. The [beforeAll](https://jestjs.io/docs/setup-teardown#one-time-setup) and [afterAll](https://jestjs.io/docs/setup-teardown#one-time-setup) functions provided by Jest are used for these purposes to make our tests DRY.
 
 ### Setting up Selenium WebDriver
 
@@ -416,7 +416,7 @@ describe('My Selenium Tests', function () {
 Now run your test again
 
 ```bash
-npm test -- --testPathPattern=selenium-todos.test.js
+npm test src/tests/e2e/selenium-todos.test.js
 ```
 
 Test should all pass
@@ -625,6 +625,12 @@ describe('My Selenium Tests', function () {
 })
 ```
 
+Make sure to run test and it should pass
+
+```javascript
+npm test src/tests/e2e/selenium-todos.test.js
+```
+
 ## Test Case: Clicking on "Finished the list!" will delete all elements in the list
 
 In this test case, we will verify the functionality of clicking the "Finished the list!" button, which should remove all items from the to-do list.
@@ -733,9 +739,10 @@ expect(listItems.length).toBe(0);
     });
 ```
 
-Now run your test again
+Make sure to run test and it should pass
+
 ```javascript
-npm test -- --testPathPattern=selenium-todos.test.js
+npm test src/tests/e2e/selenium-todos.test.js
 ```
 all test should now have pased
 
