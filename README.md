@@ -632,7 +632,7 @@ The test locates the "Finished the list!" button on the web page using an [XPath
 
 ***Wait? why are we using xpath? Take a moment to discuss the current issue we face.  We have two button elements on our page if we write our test to select by css element of button our test will click on the first button that is reference!  Our project currently has a flaw.. There are no css classes or Id's in order to differentiate the two.  We are using XPath in this example because our web page lacks unique CSS classes or IDs to distinguish between the two button elements. XPath allows us to precisely target the "Finished the list!" button without ambiguity***
 
-**Note There are other ways to also differentiate between two elements by not using the xpath we are however taking this opportunity to also introduce the xpath method in selenium**
+**Note There are other ways to also differentiate between two elements by not using the xpath we are however taking this opportunity to also introduce the xpath method in selenium Which may not be a best practice at all**
 
 Finding the xpath
 
@@ -642,7 +642,13 @@ Finding the xpath
 
 Click inspect after next to inspect in the console use the icon to the left which will allow you to pick an element after clicking on it hover over the Finished the list! button.  Click on it then in the blue text in the button left right click and you will now see copy hover over copy and now you will see a xpath option clicking will copy the xpath to your clipboard to have available to paste.
 
+![](./assets/select.png)
+
 ![](./assets/x-path-copy.png)
+
+
+
+**pasting our xpath**
 
 ```javascript
 const finishedButton = await driver.findElement(selenium.By.xpath('//button[normalize-space()="Finished the list!"]'));
