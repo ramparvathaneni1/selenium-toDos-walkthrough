@@ -22,6 +22,9 @@
 
 8. Go head and start your react application running the command `npm start`
 
+- you should have your application now started
+![](./assets/todos-beginning.png)
+
 
 ## Objectives
 
