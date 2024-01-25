@@ -311,6 +311,9 @@ npm test -- --testPathPattern=selenium-todos.test.js
 
 **You should now see that your test has passed.**
 
+![](./assets/test-passed-1.png)
+
+
 ***Test Failing? Are you receiving this on your screen and your terminal, is your react application on?***
 
 ![](./assets/unable-connect-screen.png)
