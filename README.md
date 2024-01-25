@@ -26,10 +26,10 @@
 ## Objectives
 
 * **Install Selenium WebDriver:**
-  Learn how to install and configure Selenium WebDriver for use with the Firefox browser in a JavaScript environment.
+  Learn how to install and configure Selenium WebDriver for use with the chrome browser in a JavaScript environment.
 
 * **Control Browsers Remotely with JavaScript using Selenium:**
-  Understand how to use Selenium to programmatically control browser actions with JavaScript, including launching and navigating the Firefox browser.
+  Understand how to use Selenium to programmatically control browser actions with JavaScript, including launching and navigating the chrome browser.
 
 * **Load Webpages:**
   Automate the process of opening and loading webpages, with a focus on loading the local to-do application at `http://localhost:3000`.
@@ -142,7 +142,7 @@ const selenium = require('selenium-webdriver');
 
 describe('My Selenium Tests', function () {
   test(' should verify h1 text', async function() {
-      const driver = await new selenium.Builder().forBrowser('firefox').build();
+      const driver = await new selenium.Builder().forBrowser('chrome').build();
       await driver.manage().window().maximize();
     })
 
@@ -162,7 +162,7 @@ const selenium = require('selenium-webdriver');
 
 describe('My Selenium Tests', function () {
   test(' should verify h1 text', async function() {
-        const driver = await new selenium.Builder().forBrowser('firefox').build();
+        const driver = await new selenium.Builder().forBrowser('chrome').build();
         await driver.manage().window().maximize();
         await driver.get('http://localhost:3000/');
     })
@@ -184,7 +184,7 @@ const selenium = require('selenium-webdriver');
 
 describe('My Selenium Tests', function () {
   test(' should verify h1 text', async function() {
-        const driver = await new selenium.Builder().forBrowser('firefox').build();
+        const driver = await new selenium.Builder().forBrowser('chrome').build();
         await driver.manage().window().maximize();
         await driver.get('http://localhost:3000/');
         h1Element = await driver.findElement(selenium.By.css('h1'));
@@ -199,12 +199,13 @@ const actualText = await h1Element.getText();
 ````
 
 **e2e/selenium-todos.test.js**
+
 ```javascript
 const selenium = require('selenium-webdriver');
 
 describe('My Selenium Tests', function () {
   test(' should verify h1 text', async function() {
-        const driver = await new selenium.Builder().forBrowser('firefox').build();
+        const driver = await new selenium.Builder().forBrowser('chrome').build();
         await driver.manage().window().maximize();
         await driver.get('http://localhost:3000/');
         h1Element = await driver.findElement(selenium.By.css('h1'));
@@ -226,7 +227,7 @@ const selenium = require('selenium-webdriver');
 
 describe('My Selenium Tests', function () {
   test(' should verify h1 text', async function() {
-        const driver = await new selenium.Builder().forBrowser('firefox').build();
+        const driver = await new selenium.Builder().forBrowser('chrome').build();
         await driver.manage().window().maximize();
         await driver.get('http://localhost:3000/');
         h1Element = await driver.findElement(selenium.By.css('h1'));
@@ -251,7 +252,7 @@ const selenium = require('selenium-webdriver');
 
 describe('My Selenium Tests', function () {
   test(' should verify h1 text', async function() {
-        const driver = await new selenium.Builder().forBrowser('firefox').build();
+        const driver = await new selenium.Builder().forBrowser('chrome').build();
         await driver.manage().window().maximize();
         await driver.get('http://localhost:3000/');
         h1Element = await driver.findElement(selenium.By.css('h1'));
@@ -276,7 +277,7 @@ const selenium = require('selenium-webdriver');
 
 describe('My Selenium Tests', function () {
   test(' should verify h1 text', async function() {
-        const driver = await new selenium.Builder().forBrowser('firefox').build();
+        const driver = await new selenium.Builder().forBrowser('chrome').build();
         await driver.manage().window().maximize();
         await driver.get('http://localhost:3000/');
         h1Element = await driver.findElement(selenium.By.css('h1'));
@@ -295,10 +296,17 @@ describe('My Selenium Tests', function () {
 10. Run the selenium test.  Only run our selenium-todos.test.js file enter the command:
 
 ```bash
+npm test src/tests/e2e/selenium-todos.test.js
+```
+or you can run the command.
+
+```bash
 npm test -- --testPathPattern=selenium-todos.test.js
 ```
+- *--testPathPattern=selenium-todos.test.js: This is an argument passed to Jest to specify a pattern for selecting test files, in our case selenium-todos.test.js*
 
-You should now see that your test has passed.
+
+**You should now see that your test has passed.**
 
 
 ## Setup and Teardown for Selenium Tests
@@ -309,7 +317,7 @@ In order to run Selenium WebDriver tests, it's essential to set up and tear down
 
 Before running any Selenium tests, we need to set up the WebDriver instance, which includes configuring the browser to use and opening the web application. Here's how this setup is accomplished step by step:
 
-beforeAll(async function () {: This code block uses beforeAll, a Jest function that runs before all the tests in the test suite. It's where we set up the WebDriver instance.
+[beforeAll](https://jestjs.io/docs/setup-teardown#one-time-setup)(async function () {: This code block uses [beforeAll](https://jestjs.io/docs/setup-teardown#one-time-setup), a Jest function that runs before all the tests in the test suite. It's where we set up the WebDriver instance.
 
 ```javascript
 describe('My Selenium Tests', function () {
@@ -325,7 +333,7 @@ describe('My Selenium Tests', function () {
 })
 ```
 
-driver = await new selenium.Builder().forBrowser('chrome').build();: We create a new WebDriver instance for the firefox browser using Selenium's Builder class. This is where we specify the browser to be used.
+driver = await new selenium.Builder().forBrowser('chrome').build();: We create a new WebDriver instance for the chrome browser using Selenium's Builder class. This is where we specify the browser to be used.
 
 await driver.manage().window().maximize();: We maximize the browser window to ensure that the web application is displayed clearly during testing.
 
@@ -333,7 +341,7 @@ await driver.get('http://localhost:3000/');: We navigate the browser to the URL 
 
 ### Tearing Down Selenium WebDriver
 
-After all the tests have been executed, it's crucial to properly close the WebDriver instance to free up resources and terminate the browser. Here's the teardown process:
+After all the tests have been executed, it's crucial to properly close the WebDriver instance to free up resources and terminate the browser. Here's the [teardown process](https://jestjs.io/docs/setup-teardown):
 
 ```javascript
 afterAll(async function () {
@@ -342,7 +350,7 @@ afterAll(async function () {
 })
 ```
 
-afterAll(async function () {: This code block uses afterAll, a Jest function that runs after all the tests in the test suite. It's where we tear down the WebDriver instance.
+[afterAll](https://jestjs.io/docs/setup-teardown)(async function () {: This code block uses afterAll, a Jest function that runs after all the tests in the test suite. It's where we tear down the WebDriver instance.
 
 await driver.quit();: We use the quit() method to gracefully close the WebDriver instance and the associated browser.
 
@@ -358,7 +366,7 @@ describe('My Selenium Tests', function () {
     let driver;
 
     beforeAll(async function () {
-        driver = await new selenium.Builder().forBrowser('firefox').build();
+        driver = await new selenium.Builder().forBrowser('chrome').build();
         await driver.manage().window().maximize();
         await driver.get('http://localhost:3000/');
     });
@@ -754,3 +762,14 @@ describe('My Selenium Tests', function () {
         expect(listItems.length).toBe(0);
     });
 })
+```
+
+## Review Discussion
+- The application we worked on as we were creating tests you may have noticed there were some things that could be improved on feel more than welcomed to come off mute and discuss some issues to bring up in your QA review.
+
+- Example there were no CSS ID or Classnames used.
+
+## Resources
+[Jest Documentation](https://jestjs.io/)
+
+[Selenium WebDriver Documentation](https://www.selenium.dev/documentation/webdriver/)
