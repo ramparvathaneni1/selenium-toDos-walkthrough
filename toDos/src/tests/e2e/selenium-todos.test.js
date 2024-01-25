@@ -15,7 +15,7 @@ describe('My Selenium Tests', function () {
         await driver.quit()
     })
 
-    test(' should verify h1 text', async function() {
+    test.only(' should verify h1 text', async function() {
         // we no longer have to provide our setup code as this will now run beforeAll
         //  test thanks to the beforeAll method
         // const driver = await new selenium.Builder().forBrowser('chrome').build();
@@ -55,9 +55,7 @@ describe('My Selenium Tests', function () {
          expect(lastItemText).toBe('Eat more ice cream');
       });
 
-      test.only('Clicking on "Finished the list!" will delete all elements in the list', async () => {
-        // Navigate to the application
-        await driver.get('http://localhost:3000/');
+      test('Clicking on "Finished the list!" will delete all elements in the list', async () => {
 
         // Locate and click the "Finished the list!" button
         const finishedButton = await driver.findElement(selenium.By.xpath('//button[normalize-space()="Finished the list!"]'));
