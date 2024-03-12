@@ -174,7 +174,7 @@ describe('My Selenium Tests', function () {
 
 ```
 
-5. We locate the `<h1>` element of the web page using
+5. We locate the `<h1>` element of the web page using the [css selector](https://www.selenium.dev/documentation/webdriver/elements/locators/#css-selector)
 
 ```javascript
 
@@ -655,7 +655,11 @@ Click inspect after next to inspect in the console use the icon to the left whic
 
 ![](./assets/x-path-copy.png)
 
+### Using Relative xpath
 
+- There is a great chrome extension tool [Selectors Hub](https://chromewebstore.google.com/detail/ndgimibanhlabgdgjcpbbndiehljcpfh) that can make getting the relative xpath and css selectors of a element easy.
+
+- After installing selectors hub right click over `Finished the list!` button and hover to the selectors hub option then click on `Copy Relative XPath`  We will be using the relative xpath in our test example.
 
 **pasting our xpath**
 
