@@ -649,7 +649,7 @@ Finding the xpath
 
 ![](./assets/right-click-inspect.png)
 
-Click inspect after next to inspect in the console use the icon to the left which will allow you to pick an element after clicking on it hover over the Finished the list! button.  Click on it then in the blue text in the button left right click and you will now see copy hover over copy and now you will see a xpath option clicking will copy the xpath to your clipboard to have available to paste.
+Click inspect after next to inspect in the console use the icon to the left which will allow you to pick an element after clicking on it hover over the Finished the list! button.  Click on it then in the blue text in the button left right click and you will now see copy hover over copy and now you will see a xpath option clicking will copy the xpath to your clipboard to have available to paste.  If you notice this path should be quite long since it includes all nodes in that xpath.  There should be a easier way to not have to copy such a long path right?
 
 ![](./assets/select.png)
 
@@ -657,7 +657,7 @@ Click inspect after next to inspect in the console use the icon to the left whic
 
 ### Using Relative xpath
 
-- There is a great chrome extension tool [Selectors Hub](https://addons.mozilla.org/en-US/firefox/addon/selectorshub/) that can make getting the relative xpath and css selectors of a element easy.
+- There is a great firefox extension tool [Selectors Hub](https://addons.mozilla.org/en-US/firefox/addon/selectorshub/) that can make getting the relative xpath and css selectors of a element easy.
 
 - After installing selectors hub right click over `Finished the list!` button and hover to the selectors hub option then click on `Copy Relative XPath`  We will be using the relative xpath in our test example.
 
