@@ -657,7 +657,7 @@ Click inspect after next to inspect in the console use the icon to the left whic
 
 ### Using Relative xpath
 
-- There is a great chrome extension tool [Selectors Hub](https://chromewebstore.google.com/detail/ndgimibanhlabgdgjcpbbndiehljcpfh) that can make getting the relative xpath and css selectors of a element easy.
+- There is a great chrome extension tool [Selectors Hub](https://addons.mozilla.org/en-US/firefox/addon/selectorshub/) that can make getting the relative xpath and css selectors of a element easy.
 
 - After installing selectors hub right click over `Finished the list!` button and hover to the selectors hub option then click on `Copy Relative XPath`  We will be using the relative xpath in our test example.
 
@@ -678,7 +678,8 @@ await finishedButton.click();
 ```
 
 **Explanation**
--
+
+Absolute XPath specifies the exact path from the root node to the desired element, traversing the hierarchy one level at a time. In contrast, Relative XPath starts searching for the element anywhere in the document, allowing for more flexible and potentially more robust locators
 
 The XPath expression '//button[normalize-space()="Finished the list!"]' is used to locate a button element in an HTML document based on its normalized text content. Let's break down this XPath expression step by step:
 
